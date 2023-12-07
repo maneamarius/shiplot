@@ -146,6 +146,7 @@ func (s *Sower) runLoop() {
 	}
 }
 
+
 func (s *Sower) movePlot(i interface{}) {
 	var (
 		srcFullName = i.(string)
