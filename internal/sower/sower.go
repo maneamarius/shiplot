@@ -97,7 +97,7 @@ func (s *Sower) Run() (err error) {
 	}
 
 	for _, file := range files {
-		if strings.HasSuffix(file.Name(), ".plot") {
+		if strings.HasSuffix(file.Name(), ".fpt") {
 			s.wg.Add(1)
 			err = s.movePool.Invoke(filepath.Join(s.cfg.StagingPath, file.Name()))
 			if err != nil {
@@ -130,7 +130,7 @@ func (s *Sower) runLoop() {
 				return
 			}
 
-			if e.Op.Has(fsnotify.Create) && strings.HasSuffix(e.Name, ".plot") {
+			if e.Op.Has(fsnotify.Create) && strings.HasSuffix(e.Name, ".fpt") {
 				s.wg.Add(1)
 				err := s.movePool.Invoke(e.Name)
 				if err != nil {
